@@ -9,7 +9,7 @@ module.exports = {
         swaptheme: {
           primary: "#74afc9",
           secondary: "#25d3b0",
-          accent: "#596279",
+          accent: "#e5f1f7",
           neutral: "#4f5b71",
           "base-100": "#FFFFFF",
         },

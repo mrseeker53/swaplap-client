@@ -4,7 +4,8 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    // Set max width
+    <div className='max-w-[1280px] mx-auto'>
       {/* Declare Router Provider with router */}
       <RouterProvider router={router}></RouterProvider>
     </div>
