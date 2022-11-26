@@ -31,7 +31,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <span className="footer-title">Company</span>
-                    <Link to="/about" className="link link-hover">About</Link>
+                    <Link to="/advertise" className="link link-hover">Advertise</Link>
                     <Link to="/support" className="link link-hover">Support</Link>
                     <Link to="/blog" className="link link-hover">Blog</Link>
                     <Link to="/login" className="link link-hover">Login</Link>
