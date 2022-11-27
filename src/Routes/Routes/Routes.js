@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Support from '../../Pages/Home/Support/Support';
 import NotFound from '../../Pages/NotFound/NotFound';
+import Blog from '../../Pages/Blog/Blog';
 
 // Create router
 const router = createBrowserRouter([
@@ -16,12 +17,15 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>
             },
-
+            {
+                path: '/support',
+                element: <Support></Support>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            }
         ]
-    },
-    {
-        path: '/support',
-        element: <Support></Support>
     },
     // Route for 404 page
     {

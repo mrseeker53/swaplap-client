@@ -44,8 +44,8 @@ const Footer = () => {
                     <Link to="/" className="link link-hover hover:text-secondary">Cookie policy</Link>
                 </div>
                 <Link to="/">
-                    <img className='pl-8' src={logo} alt="" />
-                    <p className='text-5xl font-bold mt-[-14px] text-primary-focus hover:text-primary'>Swaplap</p>
+                    <img className='pl-6 w-28' src={logo} alt="" />
+                    <p className='text-4xl font-bold mt-[-14px] text-primary-focus hover:text-primary'>Swaplap</p>
                 </Link>
             </div>
             <div className='text-center mt-32'>
