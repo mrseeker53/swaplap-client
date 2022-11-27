@@ -7,11 +7,11 @@ const Navbar = () => {
     // Empty tag: <></> or <React.Fragment> </React.Fragment>
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/support">Support</Link></li>
     </React.Fragment>
 
     return (
-        <div>
-            <div className="navbar bg-accent flex justify-between py-5">
+            <div className="navbar bg-base-100 flex justify-between py-5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,8 +23,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/" className="flex justify-center">
-                        <img className='w-12 md:w-9 rounded-full mr-2 mt-1' src={logo} alt='' />
-                        <p className='text-xl md:text-3xl font-bold'>Swaplap</p>
+                        <img className='w-12 md:w-10 rounded-full mr-2 mt-1' src={logo} alt='' />
+                        <p className='text-xl md:text-4xl font-bold text-primary-focus hover:text-primary'>Swaplap</p>
                     </Link>
                 </div>
                 {/* For Desktop */}
@@ -34,7 +34,6 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
     );
 };
 
