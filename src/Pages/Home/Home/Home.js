@@ -2,7 +2,7 @@ import React from 'react';
 import useTitle from '../../../hooks/useTitle';
 import Advertise from '../Advertise/Advertise';
 import Banner from '../Banner/Banner';
-import Category from '../Category/Category';
+import Category from '../Category/Category/Category';
 import Support from '../Support/Support';
 
 const Home = () => {
