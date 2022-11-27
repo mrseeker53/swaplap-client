@@ -6,7 +6,7 @@ const useTitle = title => {
     useEffect(() => {
         // Change the title in the html dynamically
         document.title = `${title} - Swaplap`;
-    }, [])
+    }, [title])
 };
 
 // Export useTitle by default
