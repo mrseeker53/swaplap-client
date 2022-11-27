@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer
             className="p-10 bg-accent">
-            <div className='footer pl-20'>
+            <div className='footer lg:pl-20'>
                 <div>
                     <span className="footer-title">Connect</span>
                     {/* Added social media with icons */}

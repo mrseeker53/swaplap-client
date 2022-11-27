@@ -26,7 +26,7 @@ const Support = () => {
                                 <textarea className="textarea textarea-bordered h-44  my-4" placeholder="Leave your query"></textarea>
                             </div>
                             <div className="form-control mt-6">
-                                <button className='btn btn-primary'>Submit</button>
+                                <button className='btn btn-primary text-base-100'>Submit</button>
                             </div>
                         </form>
                     </div>

@@ -6,8 +6,8 @@ const Navbar = () => {
     // Create a variable & set menu items for duplicate uses
     // Empty tag: <></> or <React.Fragment> </React.Fragment>
     const menuItems = <React.Fragment>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/support">Support</Link></li>
+        <li><Link to="/" className=' hover:text-primary-focus'>Home</Link></li>
+        <li><Link to="/support" className=' hover:text-primary-focus'>Support</Link></li>
     </React.Fragment>
 
     return (
