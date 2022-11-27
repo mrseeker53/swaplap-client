@@ -1,0 +1,39 @@
+/* For Mobiles */
+.item-img {
+    height: 45vh;
+    width: 100vw;
+}
+
+.carousel-img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 45vh;
+    width: 100vw;
+    border-radius: 12px;
+    display: inline-block;
+    background: linear-gradient(to right, #151515 0%, rgba(11, 11, 11, 0) 60%);
+}
+
+/* For Tablets */
+@media only screen and (min-width: 768px) {
+    .item-img {
+        height: 65vh;
+    }
+
+    .carousel-img:after {
+        height: 65vh;
+    }
+}
+
+/* For Desktop */
+@media only screen and (min-width: 992px) {
+    .item-img {
+        height: 85vh;
+    }
+
+    .carousel-img:after {
+        height: 85vh;
+    }
+}
