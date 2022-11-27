@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Support from '../../Pages/Home/Support/Support';
+import NotFound from '../../Pages/NotFound/NotFound';
 
 // Create router
 const router = createBrowserRouter([
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
     {
         path: '/support',
         element: <Support></Support>
+    },
+    // Route for 404 page
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 ])
 
