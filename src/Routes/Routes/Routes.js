@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Support from '../../Pages/Home/Support/Support';
 import NotFound from '../../Pages/NotFound/NotFound';
 import Blog from '../../Pages/Blog/Blog';
+import Product from "../../Pages/Home/Category/Product/Product";
 
 // Create router
 const router = createBrowserRouter([
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/category/:id',
+                element: <Product></Product>,
+                loader: ({ params }) => fetch(`https://swaplap-server.vercel.app/category/${params.id}`)
             }
         ]
     },

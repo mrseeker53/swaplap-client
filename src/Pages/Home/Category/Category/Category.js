@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import CategoryItem from './CategoryItem';
 
 const Category = () => {
-    // Declare state to set categories
-    const [categories, setCategories] = useState([]);
-
-    // Declare useEffect to get data from server & set data
-    useEffect(() => {
-        fetch('https://swaplap-server.vercel.app/category')
-            .then(res => res.json())
-            .then(data => setCategories(data));
-    }, []);
+    // Declare useQuery to fetch /category
+    const { data: categories = [] } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('https://swaplap-server.vercel.app/category');
+            const data = await res.json();
+            return data;
+        }
+    });
 
     return (
         <div className='my-24'>
