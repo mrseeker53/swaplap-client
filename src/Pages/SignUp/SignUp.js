@@ -39,7 +39,7 @@ const SignUp = () => {
         // Clear signup error if get before
         setSignUpError('');
         // Call the createUser with params to create a user
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 // Create user
                 const user = result.user;
@@ -55,7 +55,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         // Call the saveUser with name, email
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(error => console.log(error));
             })
@@ -67,9 +67,9 @@ const SignUp = () => {
     }
 
     // Declare saveUser function with name, email params to save the user data in the database
-    const saveUser = (name, email) => {
+    const saveUser = (name, email, role) => {
         // Set user with an object that has two keys
-        const user = { name, email };
+        const user = { name, email, role };
         // Call the fetch to send a request with user data to the server API & get a response with user data from the server
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -161,7 +161,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Select Your Identity</span>
                             </label>
-                            <select
+                            <select type="role"
                                 // Validate
                                 {...register("select", {
                                     required: "Select an option"

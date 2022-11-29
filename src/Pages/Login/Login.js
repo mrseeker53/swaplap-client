@@ -15,16 +15,18 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     // Declare context using the useContext hook to use context info
-    const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, updateUser } = useContext(AuthContext);
 
     // Declare State for login error
     const [loginError, setLoginError] = useState('');
 
     // Use JWT Token
+    // Declare state to set social login email after login
+    const [loginUserSocialEmail, setLoginUserSocialEmail] = useState('');
     // Declare state to set email after login the user
     const [loginUserEmail, setLoginUserEmail] = useState('');
     // Call the useToken hook to use jwt token as an array
-    const [token] = useToken(loginUserEmail);
+    const [token] = useToken(loginUserEmail, loginUserSocialEmail);
 
     // Declare location to get previous location
     const location = useLocation();
@@ -68,6 +70,13 @@ const Login = () => {
                 // Login
                 const user = result.user;
                 console.log(user);
+
+                // Call the updateUser with param to update the user info
+                updateUser(user)
+                    .then(() => {
+                        setLoginUserSocialEmail(user.email);
+                    })
+                    .catch(error => console.log(error));
             })
             .catch(error => console.error(error))
     }
