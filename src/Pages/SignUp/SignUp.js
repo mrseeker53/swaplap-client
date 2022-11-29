@@ -14,9 +14,11 @@ const SignUp = () => {
     // Declare useForm to use React Hook Form
     const { register, handleSubmit, formState: { errors } } = useForm();
     // Declare context using the useContext hook to use context info
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, updateUser } = useContext(AuthContext);
     // Declare State for login error
     const [signUpError, setSignUpError] = useState('');
+    // Declare state to set social login email after login
+    const [loginUserSocialEmail, setLoginUserSocialEmail] = useState('');
     // Declare state to set email after creating the user
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     // Declare useNavigate to navigate the user
@@ -77,7 +79,22 @@ const SignUp = () => {
 
     // Declare event handler to use google sign in
     const handleGoogleSignIn = () => {
+        // Call the signInWithGoogle
+        signInWithGoogle()
+            .then(result => {
+                // Login
+                const user = result.user;
+                console.log(user);
 
+                // Call the updateUser with param to update the user info
+                updateUser(user)
+                    .then(() => {
+                        // Call the saveUser with name, email
+                        saveUser(user.displayName, user.email);
+                    })
+                    .catch(error => console.log(error));
+            })
+            .catch(error => console.error(error))
     }
 
     return (
