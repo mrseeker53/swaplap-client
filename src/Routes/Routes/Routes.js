@@ -8,6 +8,7 @@ import Product from "../../Pages/Home/Category/Product/Product";
 import Category from "../../Pages/Home/Category/Category/Category";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 // Create router
 const router = createBrowserRouter([
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Product></Product>,
+                element: <PrivateRoute><Product></Product></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://swaplap-server.vercel.app/category/${params.id}`)
             },
             {

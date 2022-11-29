@@ -13,10 +13,10 @@ const Product = () => {
     // Call useLoaderData to load /category/:id data as products
     const products = useLoaderData();
 
-    const { isLoading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
 
     // Display Loader
-    if (isLoading) {
+    if (loading) {
         return <Loader></Loader>
     }
 

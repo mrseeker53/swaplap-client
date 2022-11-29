@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const Booking = ({ product }) => {
     const { title, price } = product;
+    // Declare context to show user info
+    const { user } = useContext(AuthContext);
 
     // Declare event handler
     const handleBooking = event => {
@@ -10,14 +13,14 @@ const Booking = ({ product }) => {
 
         // Define Form from event.target
         const form = event.target;
-        // const name = form.name.value;
-        // const email = form.email.value;
+        const name = form.name.value;
+        const email = form.email.value;
         const phone = form.phone.value;
         const location = form.location.value;
         const title = form.title.value;
         const price = form.price.value;
 
-        console.log(phone, location, title, price);
+        console.log(name, email, phone, location, title, price);
     }
 
     return (
@@ -32,9 +35,9 @@ const Booking = ({ product }) => {
                     {/* Create Form */}
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                         {/* Name set dynamically */}
-                        {/* <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" /> */}
+                        <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />
                         {/* Email set dynamically */}
-                        {/* <input name="email" type="email" defaultValue={user?.email} disabled readOnly placeholder="Email" className="input input-bordered w-full" /> */}
+                        <input name="email" type="email" defaultValue={user?.email} disabled readOnly placeholder="Email" className="input input-bordered w-full" />
                         {/* Phone */}
                         <input name="phone" type="text" placeholder="Phone" className="input input-bordered w-full" />
                         {/* Location */}
