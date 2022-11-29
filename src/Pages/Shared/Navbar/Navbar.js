@@ -9,6 +9,7 @@ const Navbar = () => {
         <li><Link to="/" className=' hover:text-primary-focus'>Home</Link></li>
         <li><Link to="/support" className=' hover:text-primary-focus'>Support</Link></li>
         <li><Link to="/blog" className=' hover:text-primary-focus'>Blog</Link></li>
+        <li><Link to="/login" className=' hover:text-primary-focus'>Login</Link></li>
     </React.Fragment>
 
     return (
