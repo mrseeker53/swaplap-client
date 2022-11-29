@@ -74,6 +74,7 @@ const SignUp = () => {
             .then(data => {
                 // Set the state
                 setCreatedUserEmail(email);
+                setLoginUserSocialEmail(email);
             })
     }
 

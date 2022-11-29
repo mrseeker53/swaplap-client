@@ -14,7 +14,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     // Declare context using the useContext hook to use context info
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     // Declare State for login error
     const [loginError, setLoginError] = useState('');
@@ -53,7 +53,14 @@ const Login = () => {
 
     // Declare event handler to use google sign in
     const handleGoogleSignIn = () => {
-
+        // Call the signInWithGoogle
+        signInWithGoogle()
+            .then(result => {
+                // Login
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
     }
 
     return (
