@@ -7,7 +7,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-    // Dynamic title using hooks
+    // Dynamic title using hook
     useTitle('Log In');
 
     // Declare useForm hook to validate & submit form data, handle errors
