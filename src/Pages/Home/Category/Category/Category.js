@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loader from '../../../Shared/Loader/Loader';
 import CategoryItem from './CategoryItem';
 
 const Category = () => {
     // Declare useQuery to fetch /category
-    const { data: categories = [] } = useQuery({
+    const { data: categories = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
             const res = await fetch('https://swaplap-server.vercel.app/category');
@@ -12,6 +13,11 @@ const Category = () => {
             return data;
         }
     });
+
+    // Display Loader
+    if (isLoading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className='my-24'>

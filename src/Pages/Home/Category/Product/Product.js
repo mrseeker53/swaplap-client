@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 import useTitle from '../../../../hooks/useTitle';
+import Loader from '../../../Shared/Loader/Loader';
 import Booking from '../Booking/Booking';
 import ProductItem from './ProductItem';
 
@@ -10,6 +12,14 @@ const Product = () => {
 
     // Call useLoaderData to load /category/:id data as products
     const products = useLoaderData();
+
+    const { isLoading } = useContext(AuthContext);
+
+    // Display Loader
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+
 
     return (
         <div className='my-24'>
