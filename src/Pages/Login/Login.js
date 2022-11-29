@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     // Dynamic title using hook
@@ -19,8 +20,11 @@ const Login = () => {
     // Declare State for login error
     const [loginError, setLoginError] = useState('');
 
+    // Use JWT Token
     // Declare state to set email after login the user
     const [loginUserEmail, setLoginUserEmail] = useState('');
+    // Call the useToken hook to use jwt token as an array
+    const [token] = useToken(loginUserEmail);
 
     // Declare location to get previous location
     const location = useLocation();
@@ -29,6 +33,11 @@ const Login = () => {
 
     // Set the location to navigate the user to the private route or home
     const from = location.state?.from?.pathname || '/';
+
+    // If token is found, navigate to the previous route
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     // Declare event handler
     const handleLogin = data => {
