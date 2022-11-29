@@ -72,6 +72,20 @@ const SignUp = () => {
                                 placeholder='Password' />
                             {errors.password && <p className='text-error'>{errors.password?.message}</p>}
                         </div>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Select Your Identity</span>
+                            </label>
+                            <select
+                                // Validate
+                                {...register("select", {
+                                    required: "Select an option"
+                                })}
+                                className="select select-bordered">
+                                <option selected>Buyer</option>
+                                <option>Seller</option>
+                            </select>
+                        </div>
                         <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
                     </form>
                     {/* Route for sign up page */}
