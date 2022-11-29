@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     // Dynamic title using hook
@@ -17,12 +18,20 @@ const SignUp = () => {
     const { createUser, signInWithGoogle, updateUser } = useContext(AuthContext);
     // Declare State for login error
     const [signUpError, setSignUpError] = useState('');
+    // Use JWT Token
     // Declare state to set social login email after login
     const [loginUserSocialEmail, setLoginUserSocialEmail] = useState('');
     // Declare state to set email after creating the user
     const [createdUserEmail, setCreatedUserEmail] = useState('');
+    // Call the useToken hook to use token (jwt) as an array
+    const [token] = useToken(createdUserEmail, loginUserSocialEmail);
     // Declare useNavigate to navigate the user
     const navigate = useNavigate();
+
+    // If the token is found, navigate to the home route
+    if (token) {
+        navigate('/');
+    }
 
     // Declare event handler for form
     const handleSignUp = data => {
