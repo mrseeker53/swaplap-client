@@ -64,7 +64,8 @@ const Login = () => {
                         <input className='btn btn-primary w-full' value="Login" type="submit" />
                     </form>
                     {/* Route for sign up page */}
-                    <p className='text-center'>New to Swaplap <Link to="/signup" className='text-primary-focus font-semibold'>Create an Account </Link></p>
+                    <p className='text-center'>New to Swaplap? <Link to="/signup" className='text-primary-focus font-semibold'>Create an Account</Link>
+                    </p>
                     {/* Divider */}
                     <div className="divider">OR</div>
                     {/* Google Login */}

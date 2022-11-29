@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AuthProvider from './contexts/AuthProvider';
 
 
 // Create a client
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     {/* Provide the client to the App */}
     <QueryClientProvider client={queryClient}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
