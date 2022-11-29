@@ -5,6 +5,7 @@ import Support from '../../Pages/Home/Support/Support';
 import NotFound from '../../Pages/NotFound/NotFound';
 import Blog from '../../Pages/Blog/Blog';
 import Product from "../../Pages/Home/Category/Product/Product";
+import Category from "../../Pages/Home/Category/Category/Category";
 
 // Create router
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/category',
+                element: <Category></Category>
             },
             {
                 path: '/category/:id',
