@@ -38,4 +38,4 @@ Live website link [Swaplap](https://swaplap-24cd2.web.app).
 
 ### adminEmail: <tester@gmail.com>
 
-### adminPassword: [1111A@]
+### adminPassword: `1111A@`
