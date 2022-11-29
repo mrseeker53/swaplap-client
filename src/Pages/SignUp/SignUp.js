@@ -45,7 +45,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 // Use toast to show pop up message
-                toast('User created successfully')
+                toast.success('User created successfully')
 
                 // Set user info to update the user
                 const userInfo = {

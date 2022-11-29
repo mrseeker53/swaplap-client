@@ -36,6 +36,6 @@ Live website link [Swaplap](https://swaplap-24cd2.web.app).
 * MongoDB Atlas
 * JWT Token
 
-### adminEmail: <Tester@gmail.com>
+### adminEmail: <tester@gmail.com>
 
 ### adminPassword: <1111A@>
