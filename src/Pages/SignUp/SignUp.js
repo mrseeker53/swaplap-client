@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import img from '../../assets/images/login.png';
 import useTitle from '../../hooks/useTitle';
+import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     // Dynamic title using hook
@@ -11,10 +13,66 @@ const SignUp = () => {
 
     // Declare useForm to use React Hook Form
     const { register, handleSubmit, formState: { errors } } = useForm();
+    // Declare context using the useContext hook to use context info
+    const { createUser, updateUser } = useContext(AuthContext);
+    // Declare State for login error
+    const [signUpError, setSignUpError] = useState('');
+    // Declare state to set email after creating the user
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    // Declare useNavigate to navigate the user
+    const navigate = useNavigate();
 
     // Declare event handler for form
     const handleSignUp = data => {
         console.log(data);
+        // Clear signup error if get before
+        setSignUpError('');
+        // Call the createUser with params to create a user
+        createUser(data.email, data.password)
+            .then(result => {
+                // Create user
+                const user = result.user;
+                console.log(user);
+                // Use toast to show pop up message
+                toast('User created successfully')
+
+                // Set user info to update the user
+                const userInfo = {
+                    displayName: data.name
+                }
+                // Call the updateUser with param to update the user info
+                updateUser(userInfo)
+                    .then(() => {
+                        // Call the saveUser with name, email
+                        saveUser(data.name, data.email);
+                    })
+                    .catch(error => console.log(error));
+            })
+            // Set signup error
+            .catch(error => {
+                console.log(error.message);
+                setSignUpError(error.message);
+            });
+    }
+
+    // Declare saveUser function with name, email params to save the user data in the database
+    const saveUser = (name, email) => {
+        // Set user with an object that has two keys
+        const user = { name, email };
+        // Call the fetch to send a request with user data to the server API & get a response with user data from the server
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            // Get a response
+            .then(res => res.json())
+            .then(data => {
+                // Set the state
+                setCreatedUserEmail(email);
+            })
     }
 
     // Declare event handler to use google sign in
@@ -87,6 +145,10 @@ const SignUp = () => {
                             </select>
                         </div>
                         <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                        {/* Display signup error using conditional rendering */}
+                        <div>
+                            {signUpError && <p className='text-error mb-3'>{signUpError}</p>}
+                        </div>
                     </form>
                     {/* Route for sign up page */}
                     <p className='text-center'>Already have an Account? <Link to="/login" className='text-primary-focus font-semibold'>Please Login</Link></p>

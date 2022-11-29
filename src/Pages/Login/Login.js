@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import img from '../../assets/images/login.png';
 import useTitle from '../../hooks/useTitle';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     // Dynamic title using hooks
@@ -12,9 +13,42 @@ const Login = () => {
     // Declare useForm hook to validate & submit form data, handle errors
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    // Declare context using the useContext hook to use context info
+    const { signIn } = useContext(AuthContext);
+
+    // Declare State for login error
+    const [loginError, setLoginError] = useState('');
+
+    // Declare state to set email after login the user
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+
+    // Declare location to get previous location
+    const location = useLocation();
+    // Declare navigate to send the user
+    const navigate = useNavigate();
+
+    // Set the location to navigate the user to the private route or home
+    const from = location.state?.from?.pathname || '/';
+
     // Declare event handler
     const handleLogin = data => {
         console.log(data);
+        // Clear login error if get before
+        setLoginError('');
+        // Call the signIn with params to login
+        signIn(data.email, data.password)
+            .then(result => {
+                // Login
+                const user = result.user;
+                console.log(user);
+                // Set the state
+                setLoginUserEmail(data.email);
+            })
+            // Set login error
+            .catch(error => {
+                console.log(error.message);
+                setLoginError(error.message);
+            });
     }
 
     // Declare event handler to use google sign in
@@ -62,6 +96,10 @@ const Login = () => {
                             </label>
                         </div>
                         <input className='btn btn-primary w-full' value="Login" type="submit" />
+                        {/* Display login error using conditional rendering */}
+                        <div>
+                            {loginError && <p className='text-error mb-3'>{loginError}</p>}
+                        </div>
                     </form>
                     {/* Route for sign up page */}
                     <p className='text-center'>New to Swaplap? <Link to="/signup" className='text-primary-focus font-semibold'>Create an Account</Link>
