@@ -17,7 +17,7 @@ const MyProducts = () => {
 
     return (
         <div>
-            <h2 className='text-2xl mb-5'>My Buyers</h2>
+            <h2 className='text-2xl mb-5'>My Products</h2>
             <div className='overflow-x-auto'>
                 <table className='table w-full'>
                     <thead>
