@@ -17,6 +17,8 @@ import MyBuyers from "../../Pages/Dashboard/MyBuyers/MyBuyers";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SellerRoute from "../SellerRoute.js/SellerRoute";
 
 // Create router
 const router = createBrowserRouter([
@@ -69,28 +71,28 @@ const router = createBrowserRouter([
             // Seller route
             {
                 path: '/dashboard/addaproduct',
-                element: <AddAProduct></AddAProduct>
+                element: <SellerRoute><AddAProduct></AddAProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/mybuyers',
-                element: <MyBuyers></MyBuyers>
+                element: <SellerRoute><MyBuyers></MyBuyers></SellerRoute>
             },
             // Admin route
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/reporteditems',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             }
         ]
     },

@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const AllBuyers = () => {
     const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
 
     const url = `http://localhost:5000/users?role=${user?.role}`;
 
@@ -58,7 +60,7 @@ const AllBuyers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td><button className='btn btn-xs btn-primary'>Verify</button></td>
-                                    <td><button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button></td>
+                                    <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                                     <td><button className='btn btn-xs btn-error'>Delete</button></td>
                                 </tr>
                             )
