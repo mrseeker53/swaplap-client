@@ -19,6 +19,7 @@ import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import SellerRoute from "../SellerRoute.js/SellerRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 
 // Create router
 const router = createBrowserRouter([
@@ -64,9 +65,10 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
+            // Buyer route
             {
                 path: '/dashboard',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             // Seller route
             {
