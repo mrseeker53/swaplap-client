@@ -43,7 +43,7 @@ const SignUp = () => {
             .then(result => {
                 // Create user
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 // Use toast to show pop up message
                 toast.success('User created successfully')
 
@@ -163,12 +163,12 @@ const SignUp = () => {
                             </label>
                             <select name="role"
                                 // Validate
-                                {...register("select", {
+                                {...register("role", {
                                     required: "Select an option"
                                 })}
                                 className="select select-bordered">
-                                <option selected>Buyer</option>
-                                <option>Seller</option>
+                                <option defaultValue value="buyer">Buyer</option>
+                                <option value="seller">Seller</option>
                             </select>
                         </div>
                         <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
