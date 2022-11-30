@@ -4,9 +4,13 @@ import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
+import useTitle from '../hooks/useTitle';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+    // Dynamic title using hook
+    useTitle('Dashboard');
+
     // Declare context
     const { user } = useContext(AuthContext);
     // Declare hook

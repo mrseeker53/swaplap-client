@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/useTitle';
 
 const AllSellers = () => {
+    // Dynamic title using hook
+    useTitle('All Sellers');
+
     const { data: users = [], refetch } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
