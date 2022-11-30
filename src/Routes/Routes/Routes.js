@@ -9,6 +9,7 @@ import Category from "../../Pages/Home/Category/Category/Category";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashboardLayout from "../../Layout/DashboardLayout";
 
 // Create router
 const router = createBrowserRouter([
@@ -48,6 +49,12 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
+    },
+    // Create Private route
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+
     },
     // Route for 404 page
     {

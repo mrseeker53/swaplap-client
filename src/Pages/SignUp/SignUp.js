@@ -161,7 +161,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Select Your Identity</span>
                             </label>
-                            <select type="role"
+                            <select name="role"
                                 // Validate
                                 {...register("select", {
                                     required: "Select an option"
