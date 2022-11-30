@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         children: [
             // Buyer route
             {
-                path: '/dashboard',
+                path: '/dashboard/myorders',
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             // Seller route
