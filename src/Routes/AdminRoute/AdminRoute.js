@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
     // Declare context using the useContext hook to use context info
     const { user, loading } = useContext(AuthContext);
     // Declare the useAdmin to get admin
-    const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+    const [isAdmin, isAdminLoading] = useAdmin(user?.role);
 
     // Declare location using useLocation
     const location = useLocation();

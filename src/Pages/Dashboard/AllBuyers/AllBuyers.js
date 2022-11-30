@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AllBuyers = () => {
@@ -7,14 +8,32 @@ const AllBuyers = () => {
 
     const url = `http://localhost:5000/users?role=${user?.role}`;
 
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users', user?.role],
         queryFn: async () => {
             const res = await fetch(url);
             const data = await res.json();
             return data;
         }
-    })
+    });
+
+    const handleMakeAdmin = id => {
+        fetch(`http://localhost:5000/users/admin/${id}`, {
+            method: 'PUT',
+            // Add headers to verify jwt token
+            headers: {
+                // Set authorization by the token from local storage
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Make admin successfully')
+                    refetch();
+                }
+            })
+    }
 
     return (
         <div>
@@ -27,7 +46,7 @@ const AllBuyers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Verify</th>
-                            <th>Make Admin</th>
+                            <th>Admin</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -38,9 +57,9 @@ const AllBuyers = () => {
                                     <th>{i + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td><button>Verify</button></td>
-                                    <td><button>Make Admin</button></td>
-                                    <td><button>Delete</button></td>
+                                    <td><button className='btn btn-xs btn-primary'>Verify</button></td>
+                                    <td><button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button></td>
+                                    <td><button className='btn btn-xs btn-error'>Delete</button></td>
                                 </tr>
                             )
                         }
