@@ -24,6 +24,10 @@ const ProductItem = ({ product }) => {
                 <p className='text-md'>{description}</p>
                 <div className="card-actions justify-end mt-8">
                     <label
+                        htmlFor="booking-modal"
+                        className="btn btn-error text-base-100 mr-2"
+                    >Report</label>
+                    <label
                         disabled={status !== 'available'}
                         htmlFor="booking-modal"
                         className="btn btn-primary text-base-100"
