@@ -23,7 +23,36 @@ const Booking = ({ product }) => {
 
         console.log(name, email, phone, location, title, price);
 
-        toast.success('Successfully Booked');
+        // Declare object to send form data
+        const booking = {
+            name,
+            email,
+            phone,
+            location,
+            title,
+            price
+        }
+
+        // Declare fetch to get data & send data to the server using POST method by the body
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // If data sets properly (acknowledged is true), close modal & show toast
+                if (data.acknowledged) {
+                    toast.success('Successfully Booked');
+                }
+                // Display message for limit booking
+                else {
+                    toast.error(data.message);
+                }
+            })
     }
 
     return (
