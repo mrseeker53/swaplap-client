@@ -10,6 +10,13 @@ import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import AddAProduct from "../../Pages/Dashboard/AddAProduct/AddAProduct";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import MyBuyers from "../../Pages/Dashboard/MyBuyers/MyBuyers";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 
 // Create router
 const router = createBrowserRouter([
@@ -54,7 +61,38 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            },
+            // Seller route
+            {
+                path: '/dashboard/addaproduct',
+                element: <AddAProduct></AddAProduct>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/mybuyers',
+                element: <MyBuyers></MyBuyers>
+            },
+            // Admin route
+            {
+                path: '/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/reporteditems',
+                element: <ReportedItems></ReportedItems>
+            }
+        ]
     },
     // Route for 404 page
     {

@@ -23,7 +23,7 @@ const Booking = ({ product }) => {
 
         console.log(name, email, phone, location, title, price);
 
-        toast.success('Confirmation of Booking');
+        toast.success('Successfully Booked');
     }
 
     return (
