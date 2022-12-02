@@ -10,7 +10,7 @@ const useAdmin = email => {
     useEffect(() => {
         if (email) {
             // Call the fetch to send a request for admin email to the server & get a response with data
-            fetch(`http://localhost:5000/users/admin/${email}`)
+            fetch(`https://swaplap-server-mrseeker53.vercel.app/users/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

@@ -8,7 +8,7 @@ const useToken = email => {
     useEffect(() => {
         if (email) {
             // Call the fetch to send a request for token to the server & get a response with token
-            fetch(`http://localhost:5000/jwt?email=${email}`)
+            fetch(`https://swaplap-server-mrseeker53.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     // If the token is found, set the token to the local storage & state

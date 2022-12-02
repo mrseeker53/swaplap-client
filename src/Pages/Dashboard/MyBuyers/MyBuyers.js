@@ -9,7 +9,7 @@ const MyBuyers = () => {
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/dashboard/mybuyers');
+            const res = await fetch('https://swaplap-server-mrseeker53.vercel.app/dashboard/mybuyers');
             const data = await res.json();
             return data;
         }

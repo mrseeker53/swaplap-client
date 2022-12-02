@@ -10,14 +10,14 @@ const AllBuyers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/dashboard/allbuyers');
+            const res = await fetch('https://swaplap-server-mrseeker53.vercel.app/dashboard/allbuyers');
             const data = await res.json();
             return data;
         }
     });
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://swaplap-server-mrseeker53.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             // Add headers to verify jwt token
             headers: {

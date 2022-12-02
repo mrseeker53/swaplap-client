@@ -71,7 +71,7 @@ const SignUp = () => {
         // Set user with an object that has two keys
         const user = { name, email, role };
         // Call the fetch to send a request with user data to the server API & get a response with user data from the server
-        fetch('http://localhost:5000/users', {
+        fetch('https://swaplap-server-mrseeker53.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -41,7 +41,7 @@ const AddAProduct = () => {
         }
 
         // Declare fetch to get data & send data to the server using POST method by the body
-        fetch('http://localhost:5000/dashboard/myproducts', {
+        fetch('https://swaplap-server-mrseeker53.vercel.app/dashboard/myproducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

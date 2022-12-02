@@ -34,7 +34,7 @@ const Booking = ({ product }) => {
         }
 
         // Declare fetch to get data & send data to the server using POST method by the body
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://swaplap-server-mrseeker53.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
