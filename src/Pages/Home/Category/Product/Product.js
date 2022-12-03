@@ -13,6 +13,7 @@ const Product = () => {
     // Call useLoaderData to load /category/:id data as products
     const products = useLoaderData();
 
+    // Call the context to use loader
     const { loading } = useContext(AuthContext);
 
     // Display Loader
@@ -25,13 +26,17 @@ const Product = () => {
         <div className='my-24'>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    products.map(product => <ProductItem
+                    // If data found, then loop through by map ( && conditional rendering and ? optional chaining)
+                    products &&
+                    products?.map(product => <ProductItem
                         key={product._id}
                         product={product}
                     ></ProductItem>)
                 }
                 {
-                    products.map(product => <Booking
+                    // If data found, then loop through by map ( && conditional rendering and ? optional chaining)
+                    products &&
+                    products?.map(product => <Booking
                         key={product._id}
                         product={product}
                     ></Booking>)

@@ -4,7 +4,7 @@ import Loader from '../../../Shared/Loader/Loader';
 import CategoryItem from './CategoryItem';
 
 const Category = () => {
-    // Declare useQuery to fetch /category
+    // Declare useQuery to fetch /category to get data
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
@@ -23,7 +23,9 @@ const Category = () => {
         <div className='my-24'>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    categories.map(category => <CategoryItem
+                    // If data found, then loop through by map ( && conditional rendering and ? optional chaining)
+                    categories &&
+                    categories?.map(category => <CategoryItem
                         key={category._id}
                         category={category}
                     ></CategoryItem>)
