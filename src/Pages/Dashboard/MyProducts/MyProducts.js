@@ -24,10 +24,11 @@ const MyProducts = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Location</th>
-                            <th>Product</th>
+                            <th>Quality</th>
+                            <th>Availability</th>
+                            <th>Price</th>
+                            <th>Delete</th>
+                            <th>Advertise</th>
                         </tr>
                     </thead>
                     <tbody>
